@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#062b49">
+  <meta name="description" content="NIÑO ALERT: prototipo educativo de prevención y orientación frente al Fenómeno El Niño en Trujillo.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <title>NIÑO ALERT</title>
+</head>
+<body>
+  <div id="app">
+    <div id="intro" class="screen intro-screen active">
+      <div class="intro-bg"></div>
+      <div class="intro-content">
+        <img class="intro-logo" src="assets/logo.png" alt="Logo NIÑO ALERT">
+        <p class="eyebrow">PREVENCIÓN • INFORMACIÓN • SEGURIDAD</p>
+        <h1>Tu aliado frente al <span>Fenómeno El Niño</span></h1>
+        <p>Conoce tu zona, prepara tu mochila y aprende qué hacer antes, durante y después.</p>
+        <button class="primary-btn" data-go="home">Comenzar</button>
+        <div class="intro-dots"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+
+    <div id="home" class="screen app-screen">
+      <header class="topbar">
+        <button class="icon-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+        <div class="brand"><img src="assets/logo.png" alt=""> <strong>NIÑO <span>ALERT</span></strong></div>
+        <button class="icon-btn" data-go="alerts" aria-label="Alertas">🔔<b class="badge">3</b></button>
+      </header>
+      <main class="page home-page">
+        <section class="hero-card">
+          <div><span class="eyebrow">TRUJILLO • LA LIBERTAD</span><h2>¡Hola! 👋</h2><p>Infórmate, prepárate y conoce las zonas de seguridad de tu ciudad.</p></div>
+          <div class="weather-orb">🌧️</div>
+        </section>
+        <section class="risk-card">
+          <div class="section-label">Estado de referencia</div>
+          <div class="risk-row"><div><strong>Riesgo actual</strong><small>Datos demostrativos para el prototipo</small></div><span class="risk-pill medium">MEDIO</span></div>
+          <div class="progress"><span style="width:58%"></span></div>
+          <p class="muted">Consulta siempre los comunicados oficiales antes de tomar decisiones.</p>
+        </section>
+        <section class="quick-grid">
+          <button data-go="map" class="quick-card blue"><span>🗺️</span><b>Mapa</b><small>Zonas y rutas</small></button>
+          <button data-go="backpack" class="quick-card green"><span>🎒</span><b>Mochila</b><small>Checklist</small></button>
+          <button data-go="guide" class="quick-card orange"><span>📋</span><b>Qué hacer</b><small>Antes • Durante • Después</small></button>
+          <button data-go="alerts" class="quick-card red"><span>🔔</span><b>Alertas</b><small>Información</small></button>
+        </section>
+        <section class="feature-banner"><div><span class="eyebrow">NUEVO</span><h3>¿Estás preparado?</h3><p>Completa tu mochila de emergencia y revisa las recomendaciones.</p><button class="text-btn" data-go="backpack">Preparar mochila →</button></div><span class="big-emoji">🎒</span></section>
+      </main>
+      <nav class="bottom-nav">
+        <button class="nav-active" data-go="home">⌂<small>Inicio</small></button><button data-go="map">⌖<small>Mapa</small></button><button data-go="backpack">🎒<small>Mochila</small></button><button data-go="emergency">⚠<small>Emergencia</small></button><button data-go="settings">⚙<small>Más</small></button>
+      </nav>
+    </div>
+
+    <div id="map" class="screen app-screen">
+      <header class="topbar"><button class="icon-btn" data-go="home">‹</button><div class="top-title">Mapa de seguridad</div><button class="icon-btn" id="locateBtn">⌖</button></header>
+      <main class="page map-page">
+        <div class="map-toolbar"><button class="map-filter active" data-filter="all">Todo</button><button class="map-filter" data-filter="safe">Seguras</button><button class="map-filter" data-filter="risk">Riesgo</button><button class="map-filter" data-filter="help">Ayuda</button></div>
+        <div id="mapCanvas" class="map-canvas" aria-label="Mapa demostrativo de Trujillo"></div>
+        <div class="map-note"><span>ⓘ</span><div><b>Mapa demostrativo</b><p>Los puntos de seguridad son ejemplos para el prototipo. Sustituye estos datos por información oficial antes de publicar una versión operativa.</p></div></div>
+        <section class="places"><h3>Puntos destacados</h3><div id="placeList"></div></section>
+      </main>
+    </div>
+
+    <div id="backpack" class="screen app-screen">
+      <header class="topbar"><button class="icon-btn" data-go="home">‹</button><div class="top-title">Mochila de emergencia</div><span></span></header>
+      <main class="page">
+        <section class="backpack-head"><div class="bag-icon">🎒</div><div><h2>Arma tu mochila</h2><p>Marca lo que ya tienes preparado.</p></div></section>
+        <div class="completion"><div><b id="bagCount">0/10</b><small>elementos preparados</small></div><div class="circle-progress"><span id="bagPercent">0%</span></div></div>
+        <div id="bagList" class="checklist"></div>
+        <div class="tip-box">💡 <div><b>Consejo</b><p>Revisa periódicamente el estado y la fecha de vencimiento de los elementos de tu mochila.</p></div></div>
+      </main>
+    </div>
+
+    <div id="guide" class="screen app-screen">
+      <header class="topbar"><button class="icon-btn" data-go="home">‹</button><div class="top-title">¿Qué hacer?</div><span></span></header>
+      <main class="page">
+        <div class="tabs"><button class="tab active" data-tab="before">ANTES</button><button class="tab" data-tab="during">DURANTE</button><button class="tab" data-tab="after">DESPUÉS</button></div>
+        <div id="guideContent"></div>
+        <div class="tip-box">ⓘ <div><b>Recuerda</b><p>Ante una emergencia, conserva la calma y sigue las indicaciones de las autoridades y servicios oficiales.</p></div></div>
+      </main>
+    </div>
+
+    <div id="alerts" class="screen app-screen">
+      <header class="topbar"><button class="icon-btn" data-go="home">‹</button><div class="top-title">Alertas</div><button class="icon-btn" id="clearAlerts">✓</button></header>
+      <main class="page"><div class="notice-banner"><span>🔔</span><div><b>Centro de información</b><p>Estas alertas son de demostración y no sustituyen a las fuentes oficiales.</p></div></div><div id="alertList"></div></main>
+    </div>
+
+    <div id="emergency" class="screen app-screen">
+      <header class="topbar danger-top"><button class="icon-btn" data-go="home">‹</button><div class="top-title">Emergencia</div><span></span></header>
+      <main class="page emergency-page">
+        <div class="emergency-hero"><div class="sos">!</div><h2>¿Qué está ocurriendo?</h2><p>Selecciona una situación para ver recomendaciones generales.</p></div>
+        <div class="emergency-grid"><button data-emergency="Inundación">🌊<b>Inundación</b></button><button data-emergency="Lluvia intensa">🌧️<b>Lluvia intensa</b></button><button data-emergency="Huaico">⛰️<b>Huaico</b></button><button data-emergency="Otra emergencia">❗<b>Otra emergencia</b></button></div>
+        <div id="emergencyAdvice" class="advice-card hidden"></div>
+        <div class="help-actions"><a href="tel:116">📞 Bomberos 116</a><a href="tel:105">👮 Policía 105</a></div>
+      </main>
+    </div>
+
+    <div id="settings" class="screen app-screen">
+      <header class="topbar"><button class="icon-btn" data-go="home">‹</button><div class="top-title">Configuración</div><span></span></header>
+      <main class="page"><section class="profile-card"><img src="assets/logo.png" alt="Logo"><div><b>NIÑO ALERT</b><small>Prototipo educativo • v1.0</small></div></section><div class="setting-row"><span>🔔 Notificaciones</span><button class="switch on" data-toggle></button></div><div class="setting-row"><span>📍 Ubicación</span><button class="switch" data-toggle></button></div><div class="setting-row"><span>🔊 Sonidos</span><button class="switch on" data-toggle></button></div><div class="setting-row"><span>🌙 Modo oscuro</span><button class="switch" id="darkToggle"></button></div><div class="about-card"><b>Sobre el proyecto</b><p>NIÑO ALERT busca orientar a la comunidad sobre prevención, preparación y respuesta ante riesgos asociados al Fenómeno El Niño.</p></div></main>
+    </div>
+  </div>
+
+  <aside id="sideMenu" class="side-menu"><div class="menu-head"><img src="assets/logo.png" alt=""><button id="closeMenu">×</button></div><h2>NIÑO <span>ALERT</span></h2><button data-go="home">⌂ Inicio</button><button data-go="map">⌖ Mapa de seguridad</button><button data-go="backpack">🎒 Mochila de emergencia</button><button data-go="guide">📋 Antes, durante y después</button><button data-go="alerts">🔔 Alertas</button><button data-go="emergency">⚠ Emergencia</button><button data-go="settings">⚙ Configuración</button></aside>
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

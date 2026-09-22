@@ -1,0 +1,10 @@
+{
+  "name":"NIÑO ALERT",
+  "short_name":"Niño Alert",
+  "description":"Prototipo educativo de prevención frente al Fenómeno El Niño en Trujillo.",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#062b49",
+  "theme_color":"#062b49",
+  "icons":[{"src":"assets/logo.png","sizes":"572x576","type":"image/png","purpose":"any maskable"}]
+}
